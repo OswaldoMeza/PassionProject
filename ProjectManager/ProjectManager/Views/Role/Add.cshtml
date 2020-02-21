@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add Role</h2>
+<a href="/Role/List" class="navlink">Back to List</a>
+<form method="POST" action="/Role/Add">
+    <div class="inpfield"><span>Description:</span><input type="text" id="RoleDesc" name="RoleDesc" /></div>
+    <div class="inpfield"><input type="submit" value="Add New Role" /></div>
+</form>

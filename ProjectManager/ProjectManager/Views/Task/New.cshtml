@@ -1,0 +1,38 @@
+﻿@model  List<ProjectManager.Models.Project>
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Task</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Task/List">Back to List</a>
+</div>
+<div>
+    <div class="col2">
+        <form method="post" action="/Task/Add">
+            <div class="inpfield"><span>Description:</span><input type="text" name="TaskDesc" id="TaskDesc" /></div>
+            <div class="inpfield"><span>Date Created:</span><input type="text" name="DateCreated" id="DateCreated" /></div>
+            <div class="inpfield"><span>Status:</span><input type="text" name="Status" id="Status" /></div>
+            <div class="inpfield"><span>Date Finished:</span><input type="text" name="DateFinished" id="DateFinished" /></div>
+            <div class="inpfield">
+                <span>Project:</span>
+                <select id="ProjectId" type="text" name="ProjectId">
+                    @{
+                        //A rendering loop for presenting a list of Projects
+                        foreach (var project in  Model)
+                        {
+                            <option value="@project.ProjectId">@project.ProjectDesc</option>
+
+                        }
+                    }
+                </select>
+            </div>
+            <div class="inpfield">
+                <input type="submit" value="Add Task">
+            </div>
+        </form>
+    </div>
+    <div class="col2last"></div>
+    <div style="clear:both;"></div>
+</div>

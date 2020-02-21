@@ -1,0 +1,32 @@
+﻿@model  List<ProjectManager.Models.Role>
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add a New User</h2>
+<div class="navbar">
+    <a class="navlink" href="/User/List">Back to List</a>
+</div>
+<form method="POST" action="/User/Add">
+    <div class="inpfield"><span>First Name:</span><input id="UserFname" type="text" name="UserFname" /></div>
+    <div class="inpfield"><span>Last Name:</span><input id="UserLname" type="text" name="UserLname" /></div>
+    <div class="inpfield"><span>Email:</span><input id="Email" type="text" name="Email" /></div>
+    <div class="inpfield"><span>Phone:</span><input id="Phone" type="text" name="Phone" /></div>
+    <div class="inpfield">
+        <span>Role:</span>
+        <select id="RoleId" type="text" name="RoleId">
+            @{
+                //A rendering loop for presenting a list of Roles
+                //The User mush have a role attached to them
+                foreach (var role in Model)
+                {
+                    <option value="@role.RoleId">@role.RoleDesc</option>
+
+                }
+            }
+        </select>
+    </div>
+    <div class="inpfield">
+        <input type="submit" value="Add User">
+    </div>
+</form>

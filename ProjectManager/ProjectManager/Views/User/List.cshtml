@@ -1,0 +1,35 @@
+﻿@model List<ProjectManager.Models.User>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Users</h2>
+<div class="navbar">
+    <a class="navlink" href="/User/New">Add New User</a>
+</div>
+<!--Will add button once comepelted-->
+<form method="GET" action="/User/List">
+    <input type="text" name="usersearchkey" id="usersearchkey" />
+    <input type="submit" value="Search" />
+</form>
+<div class="tilecontainer">
+    @{
+        foreach (var User in Model)
+        {
+            <div class="listitem">
+                    
+                    <div class="itemdetails">
+
+                        <div class="listcat"><a href="/User/Show/@User.UserId">@User.UserFname @User.UserLname</a></div>
+                        <div class="listcat">Email : <span>@User.Email</span></div>
+                        <div class="listcat">Phone : <span>@User.Phone</span></div>
+                        <div class="listcat">1st Role : <span>@User.Role.RoleDesc</span></div>
+
+                    </div>
+                    <div style="clear:both;"></div>
+            </div>
+        }
+    }
+    <div style="clear:both;"></div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model ProjectManager.Models.ViewModels.UpdateTasks
+
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Task</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Task/List">Back to List</a>
+</div>
+<div>
+    <div class="col2">
+        <form method="post" action="/Task/Update/@Model.Task.TaskId">
+            <div class="inpfield"><span>Description:</span><input type="text" name="TaskDesc" id="TaskDesc" value="@Model.Task.TaskDesc" /></div>
+            <div class="inpfield"><span>Date Created:</span><input type="text" name="DateCreated" id="DateCreated" value="@Model.Task.DateCreated" /></div>
+            <div class="inpfield"><span>Status:</span><input type="text" name="Status" id="Status" value="@Model.Task.Status"/></div>
+            <div class="inpfield"><span>Date Finished:</span><input type="text" name="DateFinished" id="DateFinished" value="@Model.Task.DateFinished"/></div>
+            <div class="inpfield">
+                <span>Project: </span>
+                <select id="ProjectId" name="ProjectId">
+                    @foreach (var projects in Model.Project)
+                    {
+                        var selected = "";
+                        if (Model.Task.ProjectId == projects.ProjectId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@projects.ProjectId" @selected>@projects.ProjectDesc </option>
+                    }
+                </select>
+            </div>
+            <input type="submit" value="Add Task" />
+        </form>
+    </div>
+    <div class="col2last"></div>
+    <div style="clear:both;"></div>
+</div>

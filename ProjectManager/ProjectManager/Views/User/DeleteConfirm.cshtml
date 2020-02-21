@@ -1,0 +1,12 @@
+﻿@model ProjectManager.Models.User
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete @Model.UserFname @Model.UserLname?</h2>
+<div class="navbar">
+    <a href="/User/Show/@Model.UserId">Cancel</a>
+</div>
+<form method="POST" action="/User/Delete/@Model.UserId">
+    <div class="inpfield"><input type="submit" value="Confirm" /></div>
+</form>

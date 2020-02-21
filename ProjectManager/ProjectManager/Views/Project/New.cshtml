@@ -1,0 +1,23 @@
+﻿@model  List<ProjectManager.Models.Project>
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Project</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Project/List">Back to List</a>
+</div>
+<div>
+    <div class="col2">
+        <form method="post" action="/Project/Add">
+            <div class="inpfield"><span>Description:</span><input type="text" name="ProjectDesc" id="ProjectDesc" /></div>
+            <div class="inpfield"><span>Date Created:</span><input type="text" name="DateCreated" id="DateCreated" /></div>
+            <div class="inpfield"><span>Status:</span><input type="text" name="Status" id="Status" /></div>
+            <div class="inpfield"><span>Date Finished:</span><input type="text" name="DateFinished" id="DateFinished" /></div>
+            <input type="submit" value="Add Project" />
+        </form>
+    </div>
+    <div class="col2last"></div>
+    <div style="clear:both;"></div>
+</div>

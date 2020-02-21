@@ -1,0 +1,59 @@
+﻿
+@model ProjectManager.Models.ViewModels.ShowTasks
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>@Model.Task.TaskDesc</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Task/List">Back to List</a>
+    <a class="navlink" href="/Task/Update/@Model.Task.TaskId">Update</a>
+    <!--I don't think tasks should be deleted once completed, it's better to keep the log for tracking-->
+    @*<a class="navlink" href="/Task/DeleteConfirm/@Model.Task.TaskId">Delete</a>*@
+</div>
+<div>
+    <div class="col2">
+        <div><span>Description:</span> @Model.Task.TaskDesc</div>
+        <div><span>Date Created:</span>@Model.Task.DateCreated</div>
+        <div><span>Status:</span> @Model.Task.Status</div>
+        <div><span>Date Finished:</span>@Model.Task.DateFinished</div>
+        <div><span>Project:</span>@Model.Task.Project.ProjectDesc</div>
+        
+    </div>
+    <div class="col2last">
+        <div class="sectionheader">Assigned Users:</div>
+        @{ 
+
+            foreach (var user in @Model.User)
+            {
+                <div class="lineitem">
+                    <a href="/User/Show/@user.UserId">@user.UserFname @user.UserLname</a>
+                    @{ 
+                        //Rare instance of a double GET parameter
+                        //we are passing a link which contains the ownerID and petID
+                    }
+                    <a href="/Task/DetachUser/@Model.Task.TaskId?UserId=@user.UserId">
+                        Unassign User
+                    </a>
+                </div>
+            }
+
+        }
+        <form method="post" action="/Task/AttachUser/@Model.Task.TaskId">
+            <select name="UserId" id="UserId">
+                @{
+                    foreach (var user in Model.All_User)
+                    {
+                        <option value="@user.UserId">
+                            @user.UserFname @user.UserLname (@user.Role.RoleDesc)
+                        </option>
+                    }
+                }
+            </select>
+            <input type="submit" value="Assign User"/>
+        </form>
+        
+    </div>
+    <div style="clear:both;"></div>
+</div>

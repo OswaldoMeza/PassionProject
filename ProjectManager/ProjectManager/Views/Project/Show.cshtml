@@ -1,0 +1,38 @@
+﻿
+@model ProjectManager.Models.ViewModels.ShowProjects
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>@Model.Project.ProjectDesc</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Project/List">Back to List</a>
+    <a class="navlink" href="/Project/Update/@Model.Project.ProjectId">Update</a>
+    <!--I don't think tasks should be deleted once completed, it's better to keep the log for tracking-->
+    @*<a class="navlink" href="/Project/DeleteConfirm/@Model.ProjectId">Delete</a>*@
+</div>
+<div>
+    <div class="col2">
+        <div><span>Description:</span> @Model.Project.ProjectDesc</div>
+        <div><span>Date Created:</span>@Model.Project.DateCreated</div>
+        <div><span>Status:</span> @Model.Project.Status</div>
+        <div><span>Date Finished:</span>@Model.Project.DateFinished</div>
+
+    </div>
+    <div class="col2last">
+        <div class="sectionheader">To Do:</div>
+        @{
+
+            foreach (var task in @Model.Task)
+            {
+                <div class="lineitem">
+                    <a href="/Task/Show/@task.TaskId">@task.TaskDesc, @task.Status</a>
+                </div>
+            }
+
+
+        }
+    </div>
+    <div style="clear:both;"></div>
+</div>

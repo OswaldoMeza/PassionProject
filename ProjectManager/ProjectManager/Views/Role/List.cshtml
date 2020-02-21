@@ -1,0 +1,27 @@
+﻿@model List<ProjectManager.Models.Role>
+
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Roles</h2>
+<div class="navbar">
+    <a href="/Role/Add">Add New</a>
+</div>
+<form method="GET" action="/Role/List">
+    <input type="text" id="rolesearchkey" name="rolesearchkey" />
+    <input type="submit" value="Search" />
+</form>
+<div class="tilecontainer">
+    @{
+        foreach (var roles in @Model)
+        {
+
+            <div class="listitem">
+                <a href="/Role/Show/@roles.RoleId">@roles.RoleDesc</a>
+                <a class="cta" href="/Role/Update/@roles.RoleId">Update</a>
+            </div>
+        }
+    }
+</div>

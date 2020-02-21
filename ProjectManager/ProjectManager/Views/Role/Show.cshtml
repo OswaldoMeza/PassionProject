@@ -1,0 +1,14 @@
+﻿@model ProjectManager.Models.Role
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+<div class="navbar">
+    <a class="navlink" href="/Role/List">Back to List</a>
+    <a class="navlink" href="/Role/Update/@Model.RoleId">Update</a>
+    <a class="navlink" href="/Role/DeleteConfirm/@Model.RoleId">Delete</a>
+</div>
+<div>
+    <span>Name : </span>@Model.RoleDesc
+</div>

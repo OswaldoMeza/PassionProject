@@ -1,0 +1,36 @@
+﻿@model ProjectManager.Models.ViewModels.UpdateUsers
+
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+<div class="navbar">
+    <a href="/User/List">Back to List</a>
+</div>
+<!-- Do not forget enctype="multiplart/form-data" if you want to do file upload! -->
+<form action="/User/Update/@Model.User.UserId" method="POST" enctype="multipart/form-data">
+    <!--<div class="inpfield"><span>Image: </span><input type="file" name="PetPic" id="PetPic"/></div>-->
+    <div class="inpfield"><span>First Name: </span><input type="text" value="@Model.User.UserFname" id="UserFname" name="UserFname" /> </div>
+    <div class="inpfield"><span>Last Name: </span><input type="text" value="@Model.User.UserLname" id="UserLname" name="UserLname" /> </div>
+    <div class="inpfield"><span>Email: </span><input type="text" value="@Model.User.Email" id="Email" name="Email" /> </div>
+    <div class="inpfield"><span>Phone: </span><input type="text" value="@Model.User.Phone" id="Phone" name="phone" /> </div>
+    <div class="inpfield">
+        <span>Role: </span>
+        <select id="RoleId" name="RoleId">
+            @foreach (var roles in Model.Role)
+            {
+                var selected = "";
+                if (Model.User.RoleId == roles.RoleId)
+                {
+                    selected = "selected";
+                }
+            <option value="@roles.RoleId" @selected>@roles.RoleDesc </option>
+            }
+        </select>
+    </div>
+
+    <div class="inpfield"><input type="submit" value="Update User" /></div>
+
+</form>

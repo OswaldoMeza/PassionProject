@@ -1,0 +1,13 @@
+﻿@model ProjectManager.Models.Role
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update @Model.RoleDesc</h2>
+<a href="/Role/List">Back to List</a>
+
+<form method="post" action="/Role/Update/@Model.RoleId">
+    <input type="text" id="RoleDesc" name="RoleDesc" value="@Model.RoleDesc" />
+    <input type="submit" value="Update Role" />
+</form>
+

@@ -1,0 +1,21 @@
+﻿@model List<ProjectManager.Models.Task>
+
+
+@{
+    ViewBag.Title = "List";
+}
+<h2>List of Tasks</h2>
+<div class="navbar">
+    <a class="navlink" href="/Task/New">Add New</a>
+</div>
+<div class="tilecontainer">
+    @foreach (var task in @Model)
+    {
+    <div class="listitem">
+        <div><a href="/Task/Show/@task.TaskId">@task.TaskDesc</a></div>
+        <div>Date Created: @task.DateCreated</div>
+        <div>Status: @task.Status</div>
+        <div>Date Finished: @task.DateFinished</div>
+    </div>
+    }
+</div>
